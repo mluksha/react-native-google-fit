@@ -123,6 +123,10 @@ declare module 'react-native-google-fit' {
       options: StartAndEndDate & Partial<BucketOptions>
     ) => Promise<BodyTemperatureResponse[]>;
 
+    getOxygenSaturationSamples: (
+      options: StartAndEndDate & Partial<BucketOptions>
+    ) => Promise<OxygenSaturationResponse[]>;
+
     saveBloodGlucose: (
       options: { date: string, value: number },
     ) => Promise<Boolean | undefined>
@@ -323,6 +327,13 @@ declare module 'react-native-google-fit' {
     day: Day
   }
 
+  export type OxygenSaturationResponse = {
+    startDate: string,
+    endDate: string,
+    value: number,
+    day: Day
+  }
+  
   export type WeightData = { date: string } & ({ unit: 'pound', value: number } | {});
 
   export type AuthorizeResponse = { success: true} | {success: false, message: string };
